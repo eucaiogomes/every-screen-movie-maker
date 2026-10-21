@@ -57,6 +57,7 @@ function Index() {
       selfBrowserSurface: "include",
     });
     const track = stream.getVideoTracks()[0];
+    if (!track) throw new Error("Nenhuma tela recebida. Tente novamente.");
     const settings = track.getSettings() as MediaTrackSettings & { displaySurface?: string };
     if (settings.displaySurface && settings.displaySurface !== "monitor") {
       stream.getTracks().forEach((t) => t.stop());
